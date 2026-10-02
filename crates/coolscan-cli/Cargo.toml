@@ -1,0 +1,18 @@
+[package]
+name = "coolscan-cli"
+description = "Command line front end for the Coolscan app"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "coolscan-cli"
+path = "src/main.rs"
+
+[dependencies]
+coolscan-core.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+ctrlc.workspace = true
+tracing-subscriber.workspace = true

@@ -1,0 +1,28 @@
+[workspace]
+resolver = "3"
+members = ["crates/coolscan-core", "crates/coolscan-cli", "crates/coolscan-gui"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "GPL-3.0-only"
+
+[workspace.dependencies]
+coolscan-core = { path = "crates/coolscan-core" }
+# Pinned exactly: the backend leans on module paths below nkscan's top level,
+# which a minor release is free to move
+nkscan = "=0.12.0"
+tiff = "0.11"
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+clap = { version = "4", features = ["derive"] }
+ctrlc = "3"
+eframe = { version = "0.36", features = ["persistence"] }
+rfd = "0.17"
+
+[profile.dev.package."*"]
+# Pixel loops over hundreds of megabytes are unbearable unoptimized
+opt-level = 2
